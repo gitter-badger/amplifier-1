@@ -9,6 +9,9 @@ Amplifier is an ASPNET MVC template designed for small and medium-sized modern a
 - Authentication and Authorization (Identity Server)
 - Bundling and Minification (Webpacker)
 - Automapping (AutoMapper)
-- Auditing
+- Testing (XUnit and Shouldly)
+- RESTful API (Swagger)
+- Validation (Fluent Validation)
+- Auditing and logging (NLog)
 - Social Media Support
 - Search Engine Optimization (SEO)
