@@ -76,6 +76,12 @@ namespace Amplifier.Controllers
                     _logger.LogWarning("User account locked out.");
                     return RedirectToAction(nameof(Lockout));
                 }
+                if (result.IsNotAllowed)
+                {
+                    ModelState.AddModelError(string.Empty, "Email confirmation needed.");
+                    _logger.LogWarning("User account email not confirmed");
+                    return View(model);
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
