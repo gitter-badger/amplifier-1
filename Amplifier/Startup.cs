@@ -31,7 +31,7 @@ namespace Amplifier
 
             // ASP.NET Core Identity Configuration
             services.AddIdentity<ApplicationUser, IdentityRole>(config => {
-                config.SignIn.RequireConfirmedEmail = false;
+                config.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -72,6 +72,9 @@ namespace Amplifier
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+            
+            // Configure Email Sender (SendGrid)
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
