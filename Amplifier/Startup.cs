@@ -18,6 +18,9 @@ namespace Amplifier
 {
     public class Startup
     {
+        // Secrets from Secrets Manager
+        string _adminEmail = null;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -82,11 +85,11 @@ namespace Amplifier
             });
             
             // Configure Email Sender (SendGrid)
-            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<AuthMessageSenderOptions>(Configuration);            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -109,6 +112,11 @@ namespace Amplifier
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Seed database with default values (admin user, roles, etc)
+            var context = serviceProvider.GetService<ApplicationDbContext>();
+            var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
+            SeedData.Initialize(context, userManager);
         }
     }
 }
