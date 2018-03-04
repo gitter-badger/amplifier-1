@@ -31,7 +31,10 @@ namespace Amplifier
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            // ASP.NET Core Identity Configuration
+            services.AddIdentity<ApplicationUser, IdentityRole>(config => {
+                config.SignIn.RequireConfirmedEmail = false;
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -77,6 +80,9 @@ namespace Amplifier
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+            
+            // Configure Email Sender (SendGrid)
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
