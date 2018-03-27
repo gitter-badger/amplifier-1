@@ -1,8 +1,8 @@
 # Amplifier
 
-Your ASPNET MVC template with steroids!
+Your ASP.NET Core template with steroids!
 Increase you development speed focusing just in the core of your application.
-Amplifier is an ASPNET MVC template designed for small and medium-sized modern applications.
+Amplifier is an ASP.NET Core template designed for small and medium-sized modern applications.
 
 ## Features Planned
 
