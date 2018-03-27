@@ -1,5 +1,7 @@
 # Amplifier
 
+[![Join the chat at https://gitter.im/aspnet-amplifier/Lobby](https://badges.gitter.im/aspnet-amplifier/Lobby.svg)](https://gitter.im/aspnet-amplifier/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Your ASP.NET Core template with steroids!
 Increase you development speed focusing just in the core of your application.
 Amplifier is an ASP.NET Core template designed for small and medium-sized modern applications.
